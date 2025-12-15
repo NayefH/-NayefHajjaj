@@ -4,7 +4,9 @@ import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import Bewerbungsfoto from "./assets/Bewerbungsfoto.jpg";
 
+// Hauptseite mit Hero, Portfolio-Abschnitten und Skill-Toggles.
 function App() {
+  // Skill-Liste mit Kurzbeschreibung für das ausklappbare Panel.
   const [openSkill, setOpenSkill] = useState<string | null>(null);
 
   const skills = [
@@ -35,6 +37,7 @@ function App() {
     },
   ];
 
+  // Öffnet oder schließt die Detailansicht pro Skill.
   const toggleSkill = (skillName: string) => {
     setOpenSkill((current) => (current === skillName ? null : skillName));
   };

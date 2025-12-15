@@ -1,3 +1,4 @@
+// Navigationsleiste mit Markenname und Links zu den Seitenabschnitten.
 const navLinks = [
   { href: "#about", label: "Über mich" },
   { href: "#projects", label: "Projekte" },
