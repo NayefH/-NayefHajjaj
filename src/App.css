@@ -419,6 +419,9 @@ body {
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 320ms ease, transform 360ms ease;
 }
 
 .section::before {
@@ -446,6 +449,18 @@ body {
   flex-direction: column;
   gap: 0.75rem;
   color: #d7dcff;
+}
+
+.section.hidden {
+  opacity: 0;
+}
+
+.section.section-right.hidden {
+  transform: translateX(60px);
+}
+
+.section.section-left.hidden {
+  transform: translateX(-60px);
 }
 
 .section-eyebrow {
