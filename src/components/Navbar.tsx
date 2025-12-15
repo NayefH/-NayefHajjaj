@@ -1,14 +1,13 @@
 const navLinks = [
-  { href: '#about', label: 'Ueber mich' },
-  { href: '#projects', label: 'Projekte' },
-  { href: '#skills', label: 'Skills' },
-]
+  { href: "#about", label: "Über mich" },
+  { href: "#projects", label: "Projekte" },
+  { href: "#skills", label: "Skills" },
+];
 
 function Navbar() {
   return (
     <header className="navbar">
       <div className="brand">
-        <span className="brand-mark">NH</span>
         <span className="brand-text">Nayef Hajjaj</span>
       </div>
       <nav className="nav-links">
@@ -22,7 +21,7 @@ function Navbar() {
         Kontakt
       </a>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
