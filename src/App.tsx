@@ -12,48 +12,39 @@ function App() {
   const skills = [
     {
       name: "React",
-      detail:
-        "Hooks, Context, Suspense/Server Components und Komposition für robuste UI.",
+      detail: "Hooks, Context, Suspense/Server Components und Komposition für robuste UI.",
     },
     {
       name: "TypeScript",
-      detail:
-        "Strikte Typen, Utility Types, Zod-Schemas und DX-freundliche API-Modelle.",
+      detail: "Strikte Typen, Utility Types, Zod-Schemas und DX-freundliche API-Modelle.",
     },
     {
       name: "CSS-Architektur",
-      detail:
-        "Layering, Design Tokens, themenfähige Komponenten und wartbare Utility-Mixe.",
+      detail: "Layering, Design Tokens, themenfähige Komponenten und wartbare Utility-Mixe.",
     },
     {
       name: "Design Systems",
-      detail:
-        "Storybook, Doc-Driven Development, Komponentenbibliotheken und Tokens.",
+      detail: "Storybook, Doc-Driven Development, Komponentenbibliotheken und Tokens.",
     },
     {
       name: "Performance",
-      detail:
-        "Code-Splitting, kritische Pfade, Bildoptimierung, Lighthouse & Web-Vitals.",
+      detail: "Code-Splitting, kritische Pfade, Bildoptimierung, Lighthouse & Web-Vitals.",
     },
     {
       name: "Accessibility",
-      detail:
-        "Semantik, Tastatur-UX, ARIA-Rollen, Fokus-Management und Screenreader-Checks.",
+      detail: "Semantik, Tastatur-UX, ARIA-Rollen, Fokus-Management und Screenreader-Checks.",
     },
     {
       name: "Testing",
-      detail:
-        "Unit- und Component-Tests mit Vitest/RTL, visuelles Testing und Playwright-E2E.",
+      detail: "Unit- und Component-Tests mit Vitest/RTL, visuelles Testing und Playwright-E2E.",
     },
     {
       name: "Tooling",
-      detail:
-        "Vite, eslint/prettier, CI/CD-Pipelines und schlanke Devserver-Setups.",
+      detail: "Vite, eslint/prettier, CI/CD-Pipelines und schlanke Devserver-Setups.",
     },
     {
       name: "Animationen",
-      detail:
-        "Flüssige Microinteractions, Framer Motion, Hardware-Acceleration und Timings.",
+      detail: "Flüssige Microinteractions, Framer Motion, Hardware-Acceleration und Timings.",
     },
   ];
 
@@ -64,6 +55,10 @@ function App() {
 
   return (
     <div className="page">
+      <div className="bg-hex bg-hex-1" aria-hidden="true" />
+      <div className="bg-hex bg-hex-2" aria-hidden="true" />
+      <div className="bg-hex bg-hex-3" aria-hidden="true" />
+
       <Navbar />
 
       <main className="hero">
@@ -74,9 +69,9 @@ function App() {
             schnelle Interfaces.
           </h1>
           <p className="lede">
-            Fokus auf reaktive UI, saubere Architektur und erlebbares Design.
-            Ich verbinde solide technische Basis mit animierten, barrierearmen
-            Oberflächen.
+            Ich entwickle reaktive Oberflächen, die flott laden und gut
+            strukturiert sind. Saubere Architektur, spürbares Design und
+            Zugänglichkeit stehen für mich im Mittelpunkt.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#projects">
@@ -103,13 +98,13 @@ function App() {
         id="about"
         eyebrow="Profil"
         title="Über mich"
-        intro="Ich arbeite an digitalen Produkten, die schnell laden, klar strukturiert sind und sich auf das Wesentliche fokussieren."
+        intro="Ich baue digitale Produkte, die schnell laden, klar strukturiert sind und sich auf das Wesentliche konzentrieren."
       >
         <p>
-          Seit mehreren Jahren baue ich modulare Interfaces mit React und
-          TypeScript. Mir sind Barrierefreiheit, wartbare Architektur und eine
-          schlanke Developer Experience wichtig, damit Teams schnell liefern
-          können und Nutzer:innen ein flüssiges Erlebnis haben.
+          Seit mehreren Jahren arbeite ich mit React und TypeScript an modularen
+          Interfaces. Mir sind Barrierefreiheit, wartbare Architektur und eine
+          schlanke Developer Experience wichtig – damit Teams zügig liefern und
+          Nutzer:innen ein flüssiges Erlebnis haben.
         </p>
       </Section>
 
@@ -117,12 +112,12 @@ function App() {
         id="projects"
         eyebrow="Arbeit"
         title="Ausgewählte Projekte"
-        intro="Aktuell arbeite ich an Beispielen, die Performance, klare UI und wiederverwendbare Komponenten in den Mittelpunkt stellen."
+        intro="Beispiele, in denen Performance, klare UI und wiederverwendbare Komponenten im Fokus stehen."
       >
         <ul className="list">
           <li>
-            SaaS-Dashboard mit responsiven Cards, Chart-Komponenten,
-            Live-Updates und State-Management per Zustand/Redux.
+            SaaS-Dashboard mit responsiven Cards, Chart-Komponenten, Live-Updates
+            und State-Management per Zustand/Redux.
           </li>
           <li>
             Marketing-Landingpage mit animierten Sections, Page-Transitions und
@@ -182,16 +177,20 @@ function App() {
       <Section
         id="contact"
         eyebrow="Kontakt"
-        intro="Schreib mir, wenn du ein Projekt mit Fokus auf UI und Performance starten möchtest."
+        title="Lass uns sprechen"
+        intro="Erzähl mir von deinem Vorhaben, wenn du ein Projekt mit Fokus auf UI, Performance und saubere Frontend-Architektur starten möchtest."
       >
         <p>
           Ich bin erreichbar für Freelance-Anfragen, Sparring zu Frontend
-          Architektur oder zur Optimierung bestehender Interfaces. Antworte
-          gerne mit ein paar Stichpunkten zu deinem Vorhaben.
+          Architektur oder zur Optimierung bestehender Interfaces. Schick mir
+          ein paar Stichpunkte – ich melde mich zeitnah.
         </p>
         <div className="cta-row">
-          <a className="button primary" href="mailto:hello@nayef.dev">
+          <a className="button primary" href="mailto:Nayef_hajjaj@hotmail.de">
             Mail senden
+          </a>
+          <a className="button ghost" href="https://github.com/NayefH">
+            GitHub ansehen
           </a>
           <a className="button ghost" href="#projects">
             Projekte ansehen
