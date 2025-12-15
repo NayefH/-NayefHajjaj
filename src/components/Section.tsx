@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 // Wiederverwendbarer Abschnitts-Wrapper mit optionalem Eyebrow und Intro.
 type SectionProps = {
   id: string;
-  title: string;
+  title?: string;
   eyebrow?: string;
   intro?: string;
   children?: ReactNode;
