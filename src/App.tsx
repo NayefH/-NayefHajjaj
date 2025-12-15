@@ -13,7 +13,7 @@ function App() {
     {
       name: "React",
       detail:
-        "Hooks, Context, Suspense, Server Components und Performance Patterns.",
+        "Hooks, Context, Suspense/Server Components und Komposition für robuste UI.",
     },
     {
       name: "TypeScript",
@@ -35,6 +35,26 @@ function App() {
       detail:
         "Code-Splitting, kritische Pfade, Bildoptimierung, Lighthouse & Web-Vitals.",
     },
+    {
+      name: "Accessibility",
+      detail:
+        "Semantik, Tastatur-UX, ARIA-Rollen, Fokus-Management und Screenreader-Checks.",
+    },
+    {
+      name: "Testing",
+      detail:
+        "Unit- und Component-Tests mit Vitest/RTL, visuelles Testing und Playwright-E2E.",
+    },
+    {
+      name: "Tooling",
+      detail:
+        "Vite, eslint/prettier, CI/CD-Pipelines und schlanke Devserver-Setups.",
+    },
+    {
+      name: "Animationen",
+      detail:
+        "Flüssige Microinteractions, Framer Motion, Hardware-Acceleration und Timings.",
+    },
   ];
 
   // Öffnet oder schließt die Detailansicht pro Skill.
@@ -50,12 +70,13 @@ function App() {
         <div className="hero-body">
           <p className="eyebrow">Portfolio</p>
           <h1>
-            Hallo, ich bin Nayef, Frontend-Entwickler mit einem Auge für klare
-            Interfaces.
+            Hallo, ich bin Nayef, Frontend-Entwickler mit einem Auge für klare,
+            schnelle Interfaces.
           </h1>
           <p className="lede">
             Fokus auf reaktive UI, saubere Architektur und erlebbares Design.
-            Die Seite ist noch im Aufbau, aber hier entsteht bald mehr.
+            Ich verbinde solide technische Basis mit animierten, barrierearmen
+            Oberflächen.
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#projects">
@@ -82,13 +103,13 @@ function App() {
         id="about"
         eyebrow="Profil"
         title="Über mich"
-        intro="Ich arbeite an digitalen Produkten, die schnell geladen werden, klar strukturiert sind und sich auf das Wesentliche fokussieren."
+        intro="Ich arbeite an digitalen Produkten, die schnell laden, klar strukturiert sind und sich auf das Wesentliche fokussieren."
       >
         <p>
-          In den letzten Jahren habe ich React und TypeScript in verschiedenen
-          Projekten eingesetzt, um modulare UI-Komponenten zu entwickeln.
-          Architektur, Barrierefreiheit und eine schlanke Developer Experience
-          sind für mich zentrale Themen.
+          Seit mehreren Jahren baue ich modulare Interfaces mit React und
+          TypeScript. Mir sind Barrierefreiheit, wartbare Architektur und eine
+          schlanke Developer Experience wichtig, damit Teams schnell liefern
+          können und Nutzer:innen ein flüssiges Erlebnis haben.
         </p>
       </Section>
 
@@ -96,20 +117,20 @@ function App() {
         id="projects"
         eyebrow="Arbeit"
         title="Ausgewählte Projekte"
-        intro="Aktuell arbeite ich an diesen Beispielen. Jedes Projekt fokussiert auf Performance, klare UI und wiederverwendbare Komponenten."
+        intro="Aktuell arbeite ich an Beispielen, die Performance, klare UI und wiederverwendbare Komponenten in den Mittelpunkt stellen."
       >
         <ul className="list">
           <li>
-            SaaS Dashboard mit responsiven Cards, Chart-Komponenten und
-            Zustand-Management per Zustand/Redux.
+            SaaS-Dashboard mit responsiven Cards, Chart-Komponenten,
+            Live-Updates und State-Management per Zustand/Redux.
           </li>
           <li>
-            Marketing Landingpage mit animierten Sections, Page-Transitions und
-            modularen Content-Blokken.
+            Marketing-Landingpage mit animierten Sections, Page-Transitions und
+            modularen Content-Blöcken für schnelle Iteration.
           </li>
           <li>
-            Design-System-Playground mit Tokens, Themenwechsel und Storybook
-            Docs.
+            Design-System-Playground mit Tokens, Themenwechsel, themenfähigen
+            Komponenten und Storybook-Dokumentation.
           </li>
         </ul>
       </Section>
@@ -118,7 +139,7 @@ function App() {
         id="skills"
         eyebrow="Stack"
         title="Skills & Fokus"
-        intro="Ich arbeite bevorzugt mit React, TypeScript und modernen Build-Tools wie Vite."
+        intro="Unter anderem arbeite ich bevorzugt mit React, TypeScript und modernen Build-Tools wie Vite."
       >
         <div className="pill-row">
           {skills.map((skill, index) => {
@@ -161,7 +182,6 @@ function App() {
       <Section
         id="contact"
         eyebrow="Kontakt"
-        title="Lass uns sprechen"
         intro="Schreib mir, wenn du ein Projekt mit Fokus auf UI und Performance starten möchtest."
       >
         <p>
