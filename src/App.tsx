@@ -55,10 +55,14 @@ function App() {
 
   return (
     <div className="page">
+<<<<<<< HEAD
       <div className="bg-hex bg-hex-1" aria-hidden="true" />
       <div className="bg-hex bg-hex-2" aria-hidden="true" />
       <div className="bg-hex bg-hex-3" aria-hidden="true" />
 
+=======
+      <Analytics />
+>>>>>>> 9bf2b1ceb8ca82520ba8dcb96ea8ea5299ba4f64
       <Navbar />
 
       <main className="hero">
