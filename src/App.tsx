@@ -65,6 +65,7 @@ function App() {
 
   return (
     <div className="page">
+      <Analytics />
       <Navbar />
 
       <main className="hero">
