@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+// Wiederverwendbarer Abschnitts-Wrapper mit optionalem Eyebrow und Intro.
 type SectionProps = {
   id: string;
   title: string;
