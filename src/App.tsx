@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import Bewerbungsfoto from "./assets/Bewerbungsfoto.jpg";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 
 // Hauptseite mit Hero, Portfolio-Abschnitten und Skill-Toggles.
 function App() {
