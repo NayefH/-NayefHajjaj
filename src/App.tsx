@@ -189,7 +189,7 @@ function App() {
       >
         <p>Ich bin erreichbar für Jobangebote.</p>
         <div className="cta-row">
-          <a className="button primary" href="mailto:hello@nayef.dev">
+          <a className="button primary" href="mailto:nayef_hajjaj@hotmail.de">
             Mail senden
           </a>
           <a className="button ghost" href="#projects">
