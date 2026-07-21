@@ -71,7 +71,7 @@ function App() {
           <p className="eyebrow">Portfolio</p>
           <h1>
             Hallo, ich bin Nayef, Entwickler mit einem Auge für Design und
-            Geschwindigkeit.-
+            Geschwindigkeit.
           </h1>
           <p className="lede">
             Ich setze Fokus auf reaktive UI, saubere Architektur und erlebbares
