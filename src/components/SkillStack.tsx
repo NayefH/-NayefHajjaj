@@ -1,0 +1,236 @@
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
+
+const skillGroups = [
+  {
+    index: "01",
+    title: "Frontend Core",
+    description: "Die technische Basis für robuste, wartbare Interfaces.",
+    accent: "cyan",
+    skills: [
+      {
+        name: "React",
+        detail: "Komponenten, Hooks und reaktives State-Management.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "TypeScript",
+        detail: "Typisierte Standort-, Stations- und API-Daten.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "JavaScript ES6+",
+        detail: "Klassen, Events und eigenständige Anwendungslogik.",
+        projects: ["Drum Machine"],
+      },
+      {
+        name: "Modern CSS",
+        detail: "Responsive Layouts, Zustände und visuelle Systeme.",
+        projects: ["ChargeSpot", "Drum Machine"],
+      },
+    ],
+  },
+  {
+    index: "02",
+    title: "Browser & Daten",
+    description: "Web-Plattformen sinnvoll mit echten Daten verbinden.",
+    accent: "pink",
+    skills: [
+      {
+        name: "Geolocation API",
+        detail: "Standortfreigabe und Umkreissuche im Browser.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "Overpass API",
+        detail: "Live-Abfragen von OpenStreetMap-Ladestationen.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "Progressive Web App",
+        detail: "Installierbare App mit Manifest und mobilem Fokus.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "HTML Audio API",
+        detail: "Sound-Playback, Timing, Pause und Resume.",
+        projects: ["Drum Machine"],
+      },
+    ],
+  },
+  {
+    index: "03",
+    title: "Interaktion & Delivery",
+    description: "Vom Bedienkonzept bis zur live verfügbaren Anwendung.",
+    accent: "purple",
+    skills: [
+      {
+        name: "Sequencer-Logik",
+        detail: "Patterns, Song-Queue und BPM-gesteuertes Scheduling.",
+        projects: ["Drum Machine"],
+      },
+      {
+        name: "Keyboard UX",
+        detail: "Direkte Sound-Steuerung über Tastatur und UI.",
+        projects: ["Drum Machine"],
+      },
+      {
+        name: "Vite Tooling",
+        detail: "Schnelle Entwicklung und optimierte Builds.",
+        projects: ["ChargeSpot"],
+      },
+      {
+        name: "Netlify Deployment",
+        detail: "Beide Anwendungen öffentlich und zuverlässig ausgeliefert.",
+        projects: ["ChargeSpot", "Drum Machine"],
+      },
+    ],
+  },
+];
+
+function SkillStack() {
+  const stackRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const stack = stackRef.current;
+    if (!stack) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion) {
+      stack.classList.add("is-ready");
+      return;
+    }
+
+    const groups = stack.querySelectorAll(".skill-group");
+    const items = stack.querySelectorAll(".skill-item");
+    const lines = stack.querySelectorAll(".skill-group-line");
+    const meta = stack.querySelector(".skill-stack-meta");
+
+    groups.forEach((group) => {
+      (group as HTMLElement).style.opacity = "0";
+    });
+    items.forEach((item) => {
+      (item as HTMLElement).style.opacity = "0";
+    });
+    lines.forEach((line) => {
+      (line as HTMLElement).style.transform = "scaleX(0)";
+    });
+    if (meta) (meta as HTMLElement).style.opacity = "0";
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        stack.classList.add("is-ready");
+
+        if (meta) {
+          animate(meta, {
+            opacity: [0, 1],
+            y: [12, 0],
+            duration: 600,
+            ease: "outExpo",
+          });
+        }
+
+        animate(groups, {
+          opacity: [0, 1],
+          y: [36, 0],
+          scale: [0.97, 1],
+          duration: 820,
+          delay: stagger(130, { start: 100 }),
+          ease: "outExpo",
+        });
+
+        animate(lines, {
+          scaleX: [0, 1],
+          duration: 900,
+          delay: stagger(130, { start: 250 }),
+          ease: "outExpo",
+        });
+
+        animate(items, {
+          opacity: [0, 1],
+          x: [-16, 0],
+          duration: 620,
+          delay: stagger(55, { start: 330 }),
+          ease: "outExpo",
+        });
+
+        observer.disconnect();
+      },
+      { threshold: 0.18 },
+    );
+
+    observer.observe(stack);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="skill-stack" ref={stackRef}>
+      <div className="skill-stack-meta">
+        <div className="skill-legend" aria-label="Projektlegende">
+          <span>
+            <i className="project-dot project-dot--charge" aria-hidden="true" />
+            ChargeSpot
+          </span>
+          <span>
+            <i className="project-dot project-dot--drum" aria-hidden="true" />
+            Retro Drum Machine
+          </span>
+        </div>
+        <span className="skill-animation-label">Animiert mit Anime.js</span>
+      </div>
+
+      <div className="skill-groups">
+        {skillGroups.map((group) => (
+          <article
+            className={`skill-group skill-group--${group.accent}`}
+            key={group.title}
+          >
+            <header className="skill-group-header">
+              <span className="skill-group-index">{group.index}</span>
+              <div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </div>
+            </header>
+            <div className="skill-group-line" aria-hidden="true" />
+            <ul className="skill-list">
+              {group.skills.map((skill) => (
+                <li className="skill-item" key={skill.name}>
+                  <div className="skill-item-copy">
+                    <strong>{skill.name}</strong>
+                    <p>{skill.detail}</p>
+                  </div>
+                  <div
+                    className="skill-project-markers"
+                    aria-label={`Eingesetzt in ${skill.projects.join(" und ")}`}
+                  >
+                    {skill.projects.map((project) => (
+                      <span
+                        className={
+                          project === "ChargeSpot"
+                            ? "skill-project skill-project--charge"
+                            : "skill-project skill-project--drum"
+                        }
+                        title={project}
+                        key={project}
+                      >
+                        {project === "ChargeSpot" ? "CS" : "DM"}
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default SkillStack;
