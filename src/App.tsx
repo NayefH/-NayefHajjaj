@@ -1,84 +1,97 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
+import SkillStack from "./components/SkillStack";
 import Bewerbungsfoto from "./assets/Bewerbungsfoto.jpg";
 
-// Hauptseite mit Hero, Portfolio-Abschnitten und Skill-Toggles.ss
+const projects = [
+  {
+    number: "01",
+    type: "React PWA · Geolocation",
+    title: "ChargeSpot",
+    description:
+      "Eine installierbare Web-App, die per Standortabfrage Ladestationen in der Nähe findet. Live-Daten zu Entfernung, Leistung und Öffnungszeiten sowie direkte Routenlinks machen die Suche schnell und unkompliziert.",
+    result: "Live-Suche mit Overpass API",
+    technologies: ["React", "TypeScript", "PWA"],
+    accent: "cyan",
+    url: "https://kaleidoscopic-arithmetic-efb8da.netlify.app/",
+    preview: "/projects/chargespot.png",
+    previewMode: "contain",
+  },
+  {
+    number: "02",
+    type: "Web Audio · Vanilla JavaScript",
+    title: "Retro Drum Machine",
+    description:
+      "Eine interaktive TR-808-Drummachine im 8-Bit-Look. Acht Sounds lassen sich live spielen, zu Patterns arrangieren, speichern und als Songfolge mit frei wählbarem Tempo abspielen.",
+    result: "8 Sounds · 4 Patterns · Song-Modus",
+    technologies: ["JavaScript", "Web Audio", "NES.css"],
+    accent: "pink",
+    url: "https://retrodrummachine.netlify.app/",
+    preview: "/projects/retro-drum-machine.png",
+    previewMode: "cover",
+  },
+];
+
 function App() {
-  // Skill-Liste mit Kurzbeschreibung für das ausklappbare Panel.
-  const [openSkill, setOpenSkill] = useState<string | null>(null);
+  const pageRef = useRef<HTMLDivElement | null>(null);
 
-  const skills = [
-    {
-      name: "React",
-      detail:
-        "Hooks, Context, Suspense/Server Components und Komposition für robuste UI.",
-    },
-    {
-      name: "TypeScript",
-      detail:
-        "Strikte Typen, Utility Types, Zod-Schemas und DX-freundliche API-Modelle.",
-    },
-    {
-      name: "CSS-Architektur",
-      detail:
-        "Layering, Design Tokens, themenfähige Komponenten und wartbare Utility-Mixe.",
-    },
-    {
-      name: "Design Systems",
-      detail:
-        "Storybook, Doc-Driven Development, Komponentenbibliotheken und Tokens.",
-    },
-    {
-      name: "Performance",
-      detail:
-        "Code-Splitting, kritische Pfade, Bildoptimierung, Lighthouse & Web-Vitals.",
-    },
-    {
-      name: "Accessibility",
-      detail:
-        "Semantik, Tastatur-UX, ARIA-Rollen, Fokus-Management und Screenreader-Checks.",
-    },
-    {
-      name: "Testing",
-      detail:
-        "Unit- und Component-Tests mit Vitest/RTL, visuelles Testing und Playwright-E2E.",
-    },
-    {
-      name: "Tooling",
-      detail:
-        "Vite, eslint/prettier, CI/CD-Pipelines und schlanke Devserver-Setups.",
-    },
-    {
-      name: "Animationen",
-      detail:
-        "Flüssige Microinteractions, Framer Motion, Hardware-Acceleration und Timings.",
-    },
-  ];
+  useEffect(() => {
+    const page = pageRef.current;
+    if (
+      !page ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
 
-  // Öffnet oder schließt die Detailansicht pro Skill.
-  const toggleSkill = (skillName: string) => {
-    setOpenSkill((current) => (current === skillName ? null : skillName));
-  };
+    const introAnimation = animate(page.querySelectorAll(".hero-animate"), {
+      opacity: [0, 1],
+      y: [28, 0],
+      duration: 850,
+      delay: stagger(110),
+      ease: "outExpo",
+    });
+
+    const portrait = page.querySelector(".hexagon-frame");
+    const portraitAnimation = portrait
+      ? animate(portrait, {
+          opacity: [0, 1],
+          scale: [0.88, 1],
+          rotate: ["-4deg", "0deg"],
+          duration: 1100,
+          delay: 240,
+          ease: "outElastic(1, .7)",
+        })
+      : null;
+
+    return () => {
+      introAnimation.cancel();
+      portraitAnimation?.cancel();
+    };
+  }, []);
 
   return (
-    <div className="page">
+    <div className="page" ref={pageRef}>
       <Navbar />
 
       <main className="hero">
         <div className="hero-body">
-          <p className="eyebrow">Portfolio</p>
-          <h1>
+          <p className="eyebrow hero-animate">
+            Portfolio · Frontend Development
+          </p>
+          <h1 className="hero-animate">
             Hallo, ich bin Nayef, Entwickler mit einem Auge für Design und
             Geschwindigkeit.
           </h1>
-          <p className="lede">
+          <p className="lede hero-animate">
             Ich setze Fokus auf reaktive UI, saubere Architektur und erlebbares
-            Design. Dabei verbinde solide technische Basis mit animierten,
-            barrierearmen Oberflächen.
+            Design. Dabei verbinde ich eine solide technische Basis mit
+            animierten, barrierearmen Oberflächen.
           </p>
-          <div className="hero-actions">
+          <div className="hero-actions hero-animate">
             <a className="button primary" href="#projects">
               Projekte ansehen
             </a>
@@ -108,77 +121,73 @@ function App() {
         <p>
           Seit mehreren Jahren baue ich modulare Interfaces mit React, Java und
           TypeScript. Mir sind Barrierefreiheit, wartbare Architektur und eine
-          schlanke Developer Experience wichtig. Hierbei bin ich stets offen für
-          neue Technologien und habe eine schnelle Auffangsgabe, um neue
-          Technologien zu lernen, damit ich stets moderne Lösungen anbieten
-          kann.
+          schlanke Developer Experience wichtig. Ich bin offen für neue
+          Technologien und eigne mir neue Werkzeuge schnell an, um moderne
+          Lösungen anbieten zu können.
         </p>
       </Section>
 
       <Section
         id="projects"
-        eyebrow="Arbeit"
-        title="Ausgewählte Projekte"
-        intro="Aktuell arbeite ich an Beispielen, die Performance, klare UI und wiederverwendbare Komponenten in den Mittelpunkt stellen."
+        eyebrow="Selected Work"
+        title="Projekte, die Wirkung zeigen"
+        intro="Von der ersten Idee bis zum performanten Interface: drei ausgewählte Konzepte, die Produktdenken, visuelle Präzision und sauberen Code verbinden."
+        direction="left"
       >
-        <ul className="list">
-          <li>
-            SaaS-Dashboard mit responsiven Cards, Chart-Komponenten,
-            Live-Updates und State-Management per Zustand/Redux.
-          </li>
-          <li>
-            Marketing-Landingpage mit animierten Sections, Page-Transitions und
-            modularen Content-Blöcken für schnelle Iteration.
-          </li>
-          <li>
-            Design-System-Playground mit Tokens, Themenwechsel, themenfähigen
-            Komponenten und Storybook-Dokumentation.
-          </li>
-        </ul>
+        <div className="project-grid">
+          {projects.map((project) => (
+            <article
+              className={`project-card project-card--${project.accent}`}
+              key={project.title}
+            >
+              <div className="project-visual">
+                <span className="project-number" aria-hidden="true">
+                  {project.number}
+                </span>
+                <img
+                  className={`project-preview project-preview--${project.previewMode}`}
+                  src={project.preview}
+                  alt={`Vorschau von ${project.title}`}
+                />
+              </div>
+              <div className="project-copy">
+                <p className="project-type">{project.type}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="project-result">
+                  <span aria-hidden="true">↗</span>
+                  {project.result}
+                </div>
+                <ul className="project-tags" aria-label="Technologien">
+                  {project.technologies.map((technology) => (
+                    <li key={technology}>{technology}</li>
+                  ))}
+                </ul>
+                {project.url && (
+                  <a
+                    className="project-link"
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} live öffnen`}
+                  >
+                    Live-Projekt öffnen
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
       </Section>
 
       <Section
         id="skills"
-        eyebrow="Stack"
-        title="Skills & Fokus"
-        intro="Unter anderem arbeite ich bevorzugt mit React, TypeScript und modernen Build-Tools wie Vite."
+        eyebrow="Stack in der Praxis"
+        title="Was ich einsetze – und wofür"
+        intro="Keine abstrakte Tool-Liste: Diese Fähigkeiten sind direkt in ChargeSpot und der Retro Drum Machine sichtbar."
       >
-        <div className="pill-row">
-          {skills.map((skill, index) => {
-            const isOpen = openSkill === skill.name;
-            const panelId = `skill-${index}`;
-
-            return (
-              <div
-                className={`pill-card ${isOpen ? "open" : ""}`}
-                key={skill.name}
-              >
-                <button
-                  type="button"
-                  className="pill pill-button"
-                  onClick={() => toggleSkill(skill.name)}
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                >
-                  {skill.name}
-                  <span className="pill-indicator" aria-hidden="true">
-                    {isOpen ? "−" : "+"}
-                  </span>
-                </button>
-                {isOpen && (
-                  <div
-                    className="pill-panel"
-                    id={panelId}
-                    role="region"
-                    aria-label={skill.name}
-                  >
-                    {skill.detail}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <SkillStack />
       </Section>
 
       <Section
@@ -186,6 +195,7 @@ function App() {
         eyebrow="Kontakt"
         title="Die Direktverbindung"
         intro="Schreib mir, wenn du ein Projekt mit Fokus auf UI und Performance starten möchtest."
+        direction="left"
       >
         <p>Ich bin erreichbar für Jobangebote.</p>
         <div className="cta-row">

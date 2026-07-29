@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { animate, stagger } from "animejs";
 
-// Wiederverwendbarer Abschnitts-Wrapper mit optionalem Eyebrow und Intro.
 type SectionProps = {
   id: string;
   title?: string;
@@ -11,35 +11,64 @@ type SectionProps = {
   direction?: "left" | "right";
 };
 
-function Section({ id, title, eyebrow, intro, children, direction = "right" }: SectionProps) {
+function Section({
+  id,
+  title,
+  eyebrow,
+  intro,
+  children,
+  direction = "right",
+}: SectionProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      node.classList.add("is-visible");
+      return;
+    }
+
+    node.style.opacity = "0";
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        animate(node, {
+          opacity: [0, 1],
+          x: [direction === "right" ? 48 : -48, 0],
+          duration: 850,
+          ease: "outExpo",
         });
+
+        const projectCards = node.querySelectorAll(".project-card");
+        if (projectCards.length) {
+          animate(projectCards, {
+            opacity: [0, 1],
+            y: [42, 0],
+            scale: [0.96, 1],
+            duration: 760,
+            delay: stagger(130, { start: 180 }),
+            ease: "outExpo",
+          });
+        }
+
+        observer.disconnect();
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 },
     );
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [direction]);
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`section ${visible ? "visible" : "hidden"} section-${direction}`}
+      className={`section section-${direction}`}
     >
       {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
       <div className="section-header">
