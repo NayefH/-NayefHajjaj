@@ -4,28 +4,28 @@ import { animate, stagger } from "animejs";
 const skillGroups = [
   {
     index: "01",
-    title: "Frontend Core",
-    description: "Die technische Basis für robuste, wartbare Interfaces.",
+    title: "Frontend-Grundlagen",
+    description: "Die Basis, auf der beide Projekte aufgebaut sind.",
     accent: "cyan",
     skills: [
       {
         name: "React",
-        detail: "Komponenten, Hooks und reaktives State-Management.",
+        detail: "Damit ist die Oberfläche von ChargeSpot aufgebaut.",
         projects: ["ChargeSpot"],
       },
       {
         name: "TypeScript",
-        detail: "Typisierte Standort-, Stations- und API-Daten.",
+        detail: "Hält Standort-, Stations- und API-Daten übersichtlich.",
         projects: ["ChargeSpot"],
       },
       {
         name: "JavaScript ES6+",
-        detail: "Klassen, Events und eigenständige Anwendungslogik.",
+        detail: "Steuert Sounds, Patterns und die Songfolge.",
         projects: ["Drum Machine"],
       },
       {
-        name: "Modern CSS",
-        detail: "Responsive Layouts, Zustände und visuelle Systeme.",
+        name: "CSS",
+        detail: "Für Layout, mobile Ansichten und alle UI-Zustände.",
         projects: ["ChargeSpot", "Drum Machine"],
       },
     ],
@@ -33,55 +33,55 @@ const skillGroups = [
   {
     index: "02",
     title: "Browser & Daten",
-    description: "Web-Plattformen sinnvoll mit echten Daten verbinden.",
+    description: "Funktionen, die direkt im Browser laufen.",
     accent: "pink",
     skills: [
       {
         name: "Geolocation API",
-        detail: "Standortfreigabe und Umkreissuche im Browser.",
+        detail: "Liest nach Freigabe den aktuellen Standort aus.",
         projects: ["ChargeSpot"],
       },
       {
         name: "Overpass API",
-        detail: "Live-Abfragen von OpenStreetMap-Ladestationen.",
+        detail: "Liefert Ladestationen aus OpenStreetMap.",
         projects: ["ChargeSpot"],
       },
       {
-        name: "Progressive Web App",
-        detail: "Installierbare App mit Manifest und mobilem Fokus.",
+        name: "PWA",
+        detail: "Macht ChargeSpot auf Geräten installierbar.",
         projects: ["ChargeSpot"],
       },
       {
         name: "HTML Audio API",
-        detail: "Sound-Playback, Timing, Pause und Resume.",
+        detail: "Spielt die Drum-Samples ab und pausiert sie.",
         projects: ["Drum Machine"],
       },
     ],
   },
   {
     index: "03",
-    title: "Interaktion & Delivery",
-    description: "Vom Bedienkonzept bis zur live verfügbaren Anwendung.",
+    title: "Interaktion & Veröffentlichung",
+    description: "Alles rund um Bedienung, Build und Deployment.",
     accent: "purple",
     skills: [
       {
         name: "Sequencer-Logik",
-        detail: "Patterns, Song-Queue und BPM-gesteuertes Scheduling.",
+        detail: "Verwaltet Patterns, Tempo und die Reihenfolge im Song.",
         projects: ["Drum Machine"],
       },
       {
-        name: "Keyboard UX",
-        detail: "Direkte Sound-Steuerung über Tastatur und UI.",
+        name: "Tastatursteuerung",
+        detail: "Die Drum-Sounds reagieren auch auf die Zahlentasten.",
         projects: ["Drum Machine"],
       },
       {
-        name: "Vite Tooling",
-        detail: "Schnelle Entwicklung und optimierte Builds.",
+        name: "Vite",
+        detail: "Entwicklungsserver und Produktions-Build für ChargeSpot.",
         projects: ["ChargeSpot"],
       },
       {
-        name: "Netlify Deployment",
-        detail: "Beide Anwendungen öffentlich und zuverlässig ausgeliefert.",
+        name: "Netlify",
+        detail: "Dort sind beide Projekte öffentlich erreichbar.",
         projects: ["ChargeSpot", "Drum Machine"],
       },
     ],
@@ -181,7 +181,7 @@ function SkillStack() {
             Retro Drum Machine
           </span>
         </div>
-        <span className="skill-animation-label">Animiert mit Anime.js</span>
+        <span className="skill-animation-label">Animation: Anime.js</span>
       </div>
 
       <div className="skill-groups">

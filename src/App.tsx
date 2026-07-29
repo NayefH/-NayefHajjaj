@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import SkillStack from "./components/SkillStack";
 import CyberAtmosphere from "./components/CyberAtmosphere";
+import Footer from "./components/Footer";
 import Bewerbungsfoto from "./assets/Bewerbungsfoto.jpg";
 
 const projects = [
@@ -13,8 +14,8 @@ const projects = [
     type: "React PWA · Geolocation",
     title: "ChargeSpot",
     description:
-      "Eine installierbare Web-App, die per Standortabfrage Ladestationen in der Nähe findet. Live-Daten zu Entfernung, Leistung und Öffnungszeiten sowie direkte Routenlinks machen die Suche schnell und unkompliziert.",
-    result: "Live-Suche mit Overpass API",
+      "ChargeSpot zeigt Ladestationen in der Nähe. Die App nutzt den aktuellen Standort, lädt Daten aus OpenStreetMap und öffnet bei Bedarf direkt die Route. Sie lässt sich außerdem als PWA installieren.",
+    result: "Standortsuche mit Live-Daten",
     technologies: ["React", "TypeScript", "PWA"],
     accent: "cyan",
     url: "https://kaleidoscopic-arithmetic-efb8da.netlify.app/",
@@ -26,8 +27,8 @@ const projects = [
     type: "Web Audio · Vanilla JavaScript",
     title: "Retro Drum Machine",
     description:
-      "Eine interaktive TR-808-Drummachine im 8-Bit-Look. Acht Sounds lassen sich live spielen, zu Patterns arrangieren, speichern und als Songfolge mit frei wählbarem Tempo abspielen.",
-    result: "8 Sounds · 4 Patterns · Song-Modus",
+      "Die Retro Drum Machine ist ein kleiner Step-Sequencer im 8-Bit-Look. Sounds lassen sich per Maus oder Tastatur spielen, auf acht Schritte verteilen und zu einer Songfolge zusammenbauen.",
+    result: "8 Sounds · 4 Patterns · Songfolge",
     technologies: ["JavaScript", "Web Audio", "NES.css"],
     accent: "pink",
     url: "https://retrodrummachine.netlify.app/",
@@ -100,7 +101,7 @@ function App() {
   }, []);
 
   return (
-    <div className="page" ref={pageRef}>
+    <div className="page" id="top" ref={pageRef}>
       <CyberAtmosphere />
       <Navbar />
 
@@ -111,13 +112,14 @@ function App() {
             Portfolio // Frontend Development
           </p>
           <h1 className="hero-animate">
-            Hallo, ich bin Nayef, Entwickler mit einem Auge für Design und
-            Geschwindigkeit.
+            Hi, ich bin Nayef. Ich entwickle Anwendungen, die gut aussehen und
+            zuverlässig funktionieren.
           </h1>
           <p className="lede hero-animate">
-            Ich setze Fokus auf reaktive UI, saubere Architektur und erlebbares
-            Design. Dabei verbinde ich eine solide technische Basis mit
-            animierten, barrierearmen Oberflächen.
+            Am liebsten arbeite ich mit React, TypeScript und JavaScript. Dabei
+            achte ich darauf, dass die Oberfläche verständlich bleibt, auf
+            verschiedenen Geräten funktioniert und nicht unnötig kompliziert
+            wird.
           </p>
           <div className="hero-actions hero-animate">
             <a className="button primary" href="#projects">
@@ -156,22 +158,22 @@ function App() {
         id="about"
         eyebrow="Profil"
         title="Über mich"
-        intro="Ich arbeite an digitalen Produkten, die schnell laden, klar strukturiert sind und sich auf das Wesentliche fokussieren."
+        intro="Ich mag Projekte, bei denen Gestaltung und Technik zusammenkommen."
       >
         <p>
-          Seit mehreren Jahren baue ich modulare Interfaces mit React, Java und
-          TypeScript. Mir sind Barrierefreiheit, wartbare Architektur und eine
-          schlanke Developer Experience wichtig. Ich bin offen für neue
-          Technologien und eigne mir neue Werkzeuge schnell an, um moderne
-          Lösungen anbieten zu können.
+          Beim Programmieren probiere ich gern neue Ideen aus und arbeite mich
+          schnell in unbekannte Werkzeuge ein. Wichtig sind mir übersichtlicher
+          Code, eine gute Bedienung und Details, die eine Seite angenehm machen.
+          Meine aktuellen Projekte entstehen vor allem mit React, TypeScript,
+          JavaScript und CSS.
         </p>
       </Section>
 
       <Section
         id="projects"
-        eyebrow="Selected Work"
-        title="Projekte, die Wirkung zeigen"
-        intro="Von der ersten Idee bis zum performanten Interface: drei ausgewählte Konzepte, die Produktdenken, visuelle Präzision und sauberen Code verbinden."
+        eyebrow="Projekte"
+        title="Zwei Projekte von mir"
+        intro="ChargeSpot und die Retro Drum Machine zeigen zwei unterschiedliche Seiten meiner Arbeit: eine praktische App mit Live-Daten und ein spielerisches Musik-Tool."
         direction="left"
       >
         <div className="project-grid">
@@ -211,7 +213,7 @@ function App() {
                     rel="noreferrer"
                     aria-label={`${project.title} live öffnen`}
                   >
-                    Live-Projekt öffnen
+                    Projekt öffnen
                     <span aria-hidden="true">↗</span>
                   </a>
                 )}
@@ -223,21 +225,20 @@ function App() {
 
       <Section
         id="skills"
-        eyebrow="Stack in der Praxis"
-        title="Was ich einsetze – und wofür"
-        intro="Keine abstrakte Tool-Liste: Diese Fähigkeiten sind direkt in ChargeSpot und der Retro Drum Machine sichtbar."
+        eyebrow="Stack"
+        title="Was ich dabei benutzt habe"
+        intro="Die wichtigsten Werkzeuge und Funktionen aus ChargeSpot und der Retro Drum Machine, jeweils mit dem Projekt, in dem sie vorkommen."
       >
         <SkillStack />
       </Section>
 
       <Section
         id="contact"
-        eyebrow="Kontakt"
-        title="Die Direktverbindung"
-        intro="Schreib mir, wenn du ein Projekt mit Fokus auf UI und Performance starten möchtest."
+        title="Kontakt"
+        intro="Du hast eine Stelle, ein Projekt oder einfach eine Frage? Schreib mir gern."
         direction="left"
       >
-        <p>Ich bin erreichbar für Jobangebote.</p>
+        <p>Am einfachsten erreichst du mich per E-Mail.</p>
         <div className="cta-row">
           <a className="button primary" href="mailto:nayef_hajjaj@hotmail.de">
             Mail senden
@@ -247,6 +248,8 @@ function App() {
           </a>
         </div>
       </Section>
+
+      <Footer />
     </div>
   );
 }
