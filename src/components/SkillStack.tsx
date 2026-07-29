@@ -129,33 +129,33 @@ function SkillStack() {
         if (meta) {
           animate(meta, {
             opacity: [0, 1],
-            y: [12, 0],
-            duration: 600,
+            y: [8, 0],
+            duration: 480,
             ease: "outExpo",
           });
         }
 
         animate(groups, {
           opacity: [0, 1],
-          y: [36, 0],
-          scale: [0.97, 1],
-          duration: 820,
-          delay: stagger(130, { start: 100 }),
+          y: [18, 0],
+          scale: [0.99, 1],
+          duration: 620,
+          delay: stagger(100, { start: 80 }),
           ease: "outExpo",
         });
 
         animate(lines, {
           scaleX: [0, 1],
-          duration: 900,
-          delay: stagger(130, { start: 250 }),
+          duration: 650,
+          delay: stagger(100, { start: 180 }),
           ease: "outExpo",
         });
 
         animate(items, {
           opacity: [0, 1],
-          x: [-16, 0],
-          duration: 620,
-          delay: stagger(55, { start: 330 }),
+          x: [-8, 0],
+          duration: 480,
+          delay: stagger(40, { start: 240 }),
           ease: "outExpo",
         });
 

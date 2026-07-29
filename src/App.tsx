@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import SkillStack from "./components/SkillStack";
+import CyberAtmosphere from "./components/CyberAtmosphere";
 import Bewerbungsfoto from "./assets/Bewerbungsfoto.jpg";
 
 const projects = [
@@ -49,38 +50,65 @@ function App() {
 
     const introAnimation = animate(page.querySelectorAll(".hero-animate"), {
       opacity: [0, 1],
-      y: [28, 0],
-      duration: 850,
-      delay: stagger(110),
+      y: [18, 0],
+      duration: 650,
+      delay: stagger(80),
       ease: "outExpo",
     });
 
     const portrait = page.querySelector(".hexagon-frame");
+    const portraitScan = page.querySelector(".portrait-scan");
+    const statusDot = page.querySelector(".hero-status-dot");
     const portraitAnimation = portrait
       ? animate(portrait, {
           opacity: [0, 1],
-          scale: [0.88, 1],
-          rotate: ["-4deg", "0deg"],
-          duration: 1100,
-          delay: 240,
-          ease: "outElastic(1, .7)",
+          scale: [0.97, 1],
+          y: [16, 0],
+          duration: 700,
+          delay: 180,
+          ease: "outExpo",
+        })
+      : null;
+
+    const portraitScanAnimation = portraitScan
+      ? animate(portraitScan, {
+          y: [-30, 430],
+          opacity: [0, 0.65, 0],
+          duration: 4200,
+          loop: true,
+          ease: "linear",
+        })
+      : null;
+
+    const statusAnimation = statusDot
+      ? animate(statusDot, {
+          opacity: [0.35, 1],
+          scale: [0.8, 1.25],
+          duration: 1200,
+          loop: true,
+          alternate: true,
+          ease: "inOutSine",
         })
       : null;
 
     return () => {
       introAnimation.cancel();
       portraitAnimation?.cancel();
+      portraitScanAnimation?.cancel();
+      statusAnimation?.cancel();
     };
   }, []);
 
   return (
     <div className="page" ref={pageRef}>
+      <CyberAtmosphere />
       <Navbar />
 
       <main className="hero">
         <div className="hero-body">
           <p className="eyebrow hero-animate">
-            Portfolio · Frontend Development
+            <span className="hero-status-dot" aria-hidden="true" />
+            Portfolio // Frontend Development
           </p>
           <h1 className="hero-animate">
             Hallo, ich bin Nayef, Entwickler mit einem Auge für Design und
@@ -108,6 +136,18 @@ function App() {
               alt="Nayef Hajjaj Portrait"
               className="hexagon-photo"
             />
+            <span className="portrait-scan" aria-hidden="true" />
+            <span
+              className="portrait-corner portrait-corner--top"
+              aria-hidden="true"
+            />
+            <span
+              className="portrait-corner portrait-corner--bottom"
+              aria-hidden="true"
+            />
+            <span className="portrait-label" aria-hidden="true">
+              SUBJECT_01 // NH
+            </span>
           </div>
         </aside>
       </main>
