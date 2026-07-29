@@ -38,8 +38,8 @@ function Section({
 
         animate(node, {
           opacity: [0, 1],
-          x: [direction === "right" ? 48 : -48, 0],
-          duration: 850,
+          x: [direction === "right" ? 20 : -20, 0],
+          duration: 650,
           ease: "outExpo",
         });
 
@@ -47,10 +47,10 @@ function Section({
         if (projectCards.length) {
           animate(projectCards, {
             opacity: [0, 1],
-            y: [42, 0],
-            scale: [0.96, 1],
-            duration: 760,
-            delay: stagger(130, { start: 180 }),
+            y: [20, 0],
+            scale: [0.99, 1],
+            duration: 600,
+            delay: stagger(100, { start: 140 }),
             ease: "outExpo",
           });
         }

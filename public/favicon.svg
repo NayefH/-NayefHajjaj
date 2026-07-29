@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Nayef Hajjaj – Cyber Interface</title>
+  <defs>
+    <linearGradient id="core" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d1712"/>
+      <stop offset="1" stop-color="#030705"/>
+    </linearGradient>
+    <linearGradient id="signal" x1="15" y1="18" x2="49" y2="47" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9dff60"/>
+      <stop offset="1" stop-color="#35e7df"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path
+    fill="url(#core)"
+    stroke="#9dff60"
+    stroke-opacity=".42"
+    d="M8 3h39l14 14v39l-5 5H17L3 47V8l5-5Z"
+  />
+  <path
+    fill="none"
+    stroke="#35e7df"
+    stroke-opacity=".3"
+    d="M12 8h33l11 11v33l-4 4H19L8 45V12l4-4Z"
+  />
+
+  <path
+    fill="none"
+    stroke="url(#signal)"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+    stroke-width="5"
+    filter="url(#glow)"
+    d="M17 44V20l15 24V20m0 12h15m0-12v24"
+  />
+
+  <path fill="#ff6b35" d="M51 8h5v5h-5z"/>
+  <path fill="#9dff60" d="M8 51h5v5H8z"/>
+  <path stroke="#35e7df" stroke-width="1.5" d="M4 32h7m42 0h7"/>
+</svg>
