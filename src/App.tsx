@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { animate, stagger } from "animejs";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
@@ -250,6 +251,7 @@ function App() {
       </Section>
 
       <Footer />
+      <SpeedInsights />
     </div>
   );
 }
